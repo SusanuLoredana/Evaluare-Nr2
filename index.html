@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <title>Raport Evaluare Nr.2</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 24px auto; line-height: 1.5; }
+    h1, h2 { margin-top: 24px; }
+    code, pre { background: #f5f5f5; padding: 8px; display: block; }
+    img { max-width: 100%; border: 1px solid #ddd; margin: 8px 0; }
+    .step { margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Raport Evaluare Nr.2</h1>
+  <p>Autor: Susanu • Data: 05 Dec 2025 • Durata: 50 min</p>
+
+  <h2>I. Commit</h2>
+  <div class="step">
+    <h3>1. Commit file settings.xml</h3>
+    <pre>git add settings.xml
+    git commit -m "Commit file settings.xml"</pre>
+    <img src="screens/1.png" alt="Commit settings.xml" />
+  </div>
+
+  <div class="step">
+    <h3>2. Redenumire în configuration.xml și amend</h3>
+    <pre>git mv settings.xml configuration.xml
+    git commit -m "Commit configuration.xml"
+    git commit --amend -m "Commit file configuration.xml"</pre>
+    <img src="screens/2.png" alt="Amend commit" />
+  </div>
+
+  <div class="step">
+    <h3>3. Push la remote</h3>
+    <pre>git push origin main</pre>
+    <img src="screens/3.png" alt="Push main" />
+  </div>
+
+  <h2>II. Commit</h2>
+  <div class="step">
+    <h3>4. Adăugare remote page1.html și revenire la commit anterior</h3>
+    <pre>git log --oneline
+    git reset --hard &lt;HASH&gt;
+    git push --force origin main</pre>
+    <img src="screens/4.png" alt="Reset hard și force push" />
+  </div>
+
+  <h2>I. Branch</h2>
+  <div class="step">
+    <h3>5. Creare branch stage și commit hosts.xml</h3>
+    <pre>git checkout -b stage
+    printf "&lt;hosts&gt;\n  &lt;host&gt;localhost&lt;/host&gt;\n&lt;/hosts&gt;\n" &gt; hosts.xml
+    git add hosts.xml
+    git commit -m "Commit file hosts.xml"
+    git push</pre>
+    <img src="screens/5.png" alt="hosts.xml commit" />
+  </div>
+
+  <div class="step">
+    <h3>6. Merge stage → main</h3>
+    <pre>git checkout main
+    git merge stage --no-ff -m "Merge stage into main"
+    git push origin main</pre>
+    <img src="screens/6.png" alt="Merge stage în main" />
+  </div>
+
+  <h2>II. Branch</h2>
+  <div class="step">
+    <h3>7. Creare branch dev și commit env.txt</h3>
+    <pre>git checkout -b dev
+    printf "ENV=production\nAPI_URL=https://example.com\n" &gt; env.txt
+    git add env.txt
+    git commit -m "Commit file env.txt"</pre>
+  </div>
+
+  <div class="step">
+    <h3>8. Merge dev → stage</h3>
+    <pre>git checkout stage
+    git merge dev --no-ff -m "Merge dev into stage"
+    git push origin stage</pre>
+    
+  </div>
+
+  <h2>III. Branch</h2>
+  <div class="step">
+    <h3>9. Redenumire dev → develop și push</h3>
+    <pre>git branch -m dev develop
+    git checkout develop
+    git push -u origin develop
+    git push origin --delete dev</pre>
+  </div>
+
+  <h2>Link-uri</h2>
+  <ul>
+    <li>Repository GitHub: <a href="https://github.com/SusanuLoredana/Evaluare-Nr2">https://github.com/SusanuLoredana/Evaluare-Nr2</a></li>
+  </ul>
+</body>
+</html>
